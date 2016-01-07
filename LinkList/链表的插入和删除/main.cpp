@@ -4,7 +4,7 @@
 //
 //  Created by student on 16/1/5.
 //  Copyright (c) 2016年 student. All rights reserved.
-//
+//链表的初始化
 /*
  list的讲解：
  一、单链表的讲解
