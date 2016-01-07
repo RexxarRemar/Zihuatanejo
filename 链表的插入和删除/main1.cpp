@@ -1,7 +1,7 @@
 //http://blog.csdn.net/pf4919501/article/details/38818335
 //  main.cpp
 //  链表的插入和删除
-//
+//这次是完美的通过了调试
 //  Created by student on 16/1/6.
 //  Copyright (c) 2016年 student. All rights reserved.
 //
