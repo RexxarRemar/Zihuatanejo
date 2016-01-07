@@ -80,14 +80,15 @@ void  RemoveEnd(node * head )
 //中间进行删除
 void RemoveEle(node * head)
 {
-	    //中间删除
- while ((head->data!=5)&&(head->next!=NULL)) {
+	    //中间删除 5这个元素
+ while (1) {
         node * temp = head;
         head = head->next;
        if (head->data==5) {
             temp->next= head->next;
            free(head);
            head = NULL;
+		   break;
        }
        
     }
@@ -96,6 +97,7 @@ void RemoveEle(node * head)
 void RemoveAll(node * head)
 {
 	 //最会进行删除整个链表，否则会内存泄露的
+	cout<<"删除整个链表"<<endl;
     node *p,*q;
     p=head;
     while (p->next!=NULL) {
@@ -113,6 +115,7 @@ int main(int argc, const char * argv[]) {
     node * head=NULL;
     node *  p1 = (node *)malloc(sizeof(node));
     node * p2  = p1;
+	node * tempEnd;
     for (int i = 0; i<10; i++) {
         
         if (head ==NULL) {
@@ -125,25 +128,37 @@ int main(int argc, const char * argv[]) {
         p2  = p1;
         p1->data = i;
         p1 = (node *)malloc(sizeof(node));
+		
         
     }
-    //此时p1进行了第十一块空间的申请，所以需要进行空间的释放；p2仍然指向的是第十块空间！！！
-   // free(p1);
-    //p1 = NULL;
+  // p2->next =NULL;
 	
 	//在尾部进行插入
-   InsertEnd(p2);
- //在头部进行插入
+  // InsertEnd(p2);
+	node * end = (node * )malloc(sizeof(node));
+	end ->data = 10101010;
+	end->next = NULL;
+	p2->next = end;
+	end->next=nullptr;
+	 //此时p1进行了第十一块空间的申请，所以需要进行空间的释放；p2仍然指向的是第十块空间！！！
+    free(p1);    
+    p1 = NULL;
+
+ //在头部进行插入  ok
    node * n1 = (node *)malloc(sizeof(node));
     n1->data = 11111;
 	n1->next = head;
 	head = n1;
-	//在中间进行插入
+	//在中间进行插入  ok
   InsertBegin(head,5,1000);
-    RemoveEnd(head);
+  //尾部的删除
+  //  RemoveEnd(head);
+	//中间进行删除  和中间插入类似
+  RemoveEle(head);
+
     //outPut
     Print(head);
-    //删除整个链表，防止内存泄露
+    //删除整个链表，防止内存泄露  ok
     RemoveAll(head);
 	getchar();
 	getchar();
